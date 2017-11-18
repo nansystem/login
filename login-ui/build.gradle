@@ -1,3 +1,7 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
 buildscript {
 	ext {
 		springBootVersion = '1.4.7.RELEASE'
@@ -10,10 +14,10 @@ buildscript {
 	}
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
-
+jar {
+	baseName = 'login-ui'
+	version = '0.1.0'
+}
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -24,6 +28,8 @@ repositories {
 
 
 dependencies {
+	compile project(":login-core")
+
 	compile 'org.springframework.boot:spring-boot-devtools'
 	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.2.2')
 	compile('org.springframework.boot:spring-boot-starter-security')
